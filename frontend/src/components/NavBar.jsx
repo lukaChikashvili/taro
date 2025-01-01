@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLogoutMutation } from '../../redux/api/userSlice';
 import { logout } from '../../redux/features/auth/authSlice';
+import { LogIn, LogOut} from 'lucide-react'
 
 const NavBar = () => {
     let navigate = useNavigate();
@@ -27,7 +28,7 @@ const NavBar = () => {
       }
 
   return (
-    <div className='w-full flex items-center justify-between px-[10rem] h-[4rem]'>
+    <div className='w-full flex items-center justify-between px-[6rem] h-[6rem]'>
        <div>
          <h1 onClick={() => navigate("/")}>logo</h1>
        </div>
@@ -35,11 +36,11 @@ const NavBar = () => {
        <nav>
         {userInfo ? (
             <span onClick={logoutHandler}>
-            <Button name="logout" />
+            <Button name="logout" icon = {<LogOut size = {20} />} />
             </span>
         ) : (
             <span onClick={() => navigate("/login")}>
-            <Button name="login" />
+            <Button name="login" icon={<LogIn size = {20} />}/>
             </span>
         )}
        
