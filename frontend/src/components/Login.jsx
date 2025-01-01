@@ -42,14 +42,18 @@ const Login = () => {
     }
 
   return (
-    <div>
+    <div className='w-full flex mt-[10rem] min-h-screen px-[30rem]'>
       
-      <form onSubmit={handleSubmit}>
-        <input type = 'email' value = {email} onChange={(e) => setEmail(e.target.value)} />
-        <input type = 'password' value = {password} onChange={(e) => setPassword(e.target.value)} />
+      <div className='flex flex-col gap-12 w-full'>
+        <h1 className='text-4xl text-main text-center'>Log In</h1>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-6 w-full'>
+        <input className='p-2 rounded-md shadow-md shadow-black outline-none text-black ' placeholder='Enter your email' type = 'email' value = {email} onChange={(e) => setEmail(e.target.value)} />
+        <input type = 'password' className='p-2 rounded-md shadow-md shadow-black outline-none text-black ' placeholder='Enter your password' value = {password} onChange={(e) => setPassword(e.target.value)} />
           
-          <button type='submit' disabled={isLoading}>{isLoading ? 'გთხოვთ დაელოდოთ..' : 'შესვლა'}</button>
+          <button type='submit' className = "w-full" disabled={isLoading}>{isLoading ? 'Please wait..' : 'Enter'}</button>
       </form>
+      </div>
+     
     </div>
   )
 }

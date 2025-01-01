@@ -18,7 +18,7 @@ const Home = () => {
             </p>
             <div className="flex items-center gap-8">
             <Button name = "Get a free reading now" width="15rem" />
-            <Button name = "Get a free reading now" width="15rem" bg = "#81BFDA" border = "2px solid #fff" color = "white" />
+            <Button name = "Become a Tarot Reader" width="15rem" bg = "#81BFDA" border = "2px solid #fff" color = "white" />
             </div>
         </div>
     <img src = {sun} className="mt-12" />
