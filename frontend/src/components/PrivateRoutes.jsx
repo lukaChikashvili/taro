@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router';
+import { Navigate, Outlet } from 'react-router';
 
 const PrivateRoutes = () => {
     const { userInfo } = useSelector(state => state.auth);
