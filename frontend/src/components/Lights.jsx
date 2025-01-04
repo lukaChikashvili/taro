@@ -17,9 +17,9 @@ const Lights = () => {
     shadow-camera-left={ - 10 }
 />
 
-<pointLight position={[10, 10, 10]} />
 
-<ambientLight intensity={3} />
+
+<ambientLight intensity={1} />
     </>
   )
 }

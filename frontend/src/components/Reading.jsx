@@ -9,7 +9,7 @@ const Reading = () => {
       fov: 45,
       near: 0.1,
       far:  1000,
-      position: [ 2.5, 2, -10 ]}} className='canvas'>
+      position: [0, 1, 5]}} className='canvas'>
       <Lights />
       <TarotReading />
   </Canvas>
