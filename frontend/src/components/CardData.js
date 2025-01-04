@@ -11,7 +11,7 @@ export const cardData = [
     },
     {
       "name": "The Magician",
-      "img": "https://cdn.pixabay.com/photo/2021/02/15/07/52/the-fool-6016940_960_720.jpg",
+      "img": "https://thumb.ac-illust.com/60/609de74d05b7a936f08a13638662e603_t.jpeg",
       "number": 1,
       "upright_meaning": "Manifestation, resourcefulness, power, inspired action",
       "reversed_meaning": "Lack of focus, manipulation, illusion, poor planning",
