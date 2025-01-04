@@ -10,8 +10,8 @@ function App() {
     <>
     <NavBar />
     <SpotLight />
-
-       <main className="py-3">
+    
+       <main className="py-3 w-full h-screen ">
        <Outlet />
      </main>
     </>

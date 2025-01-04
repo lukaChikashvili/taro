@@ -1,9 +1,10 @@
 import React from "react";
 import sun from '../assets/sun.png'
 import Button from "./Button";
-import { ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const Home = () => {
+  let navigate = useNavigate();
   return (
   <div className=" ">
     <div className="flex items-center justify-between px-[10rem] ">
@@ -17,7 +18,7 @@ const Home = () => {
             Whether you're seeking a deeper connection with yourself or looking for professional guidance, our Tarot card platform connects you with experienced readers and offers a space to learn and grow in your spiritual journey.
             </p>
             <div className="flex items-center gap-8">
-            <Button name = "Get a free reading now" width="15rem" />
+            <Button name = "Get a free reading now" width="15rem" onClick={() => navigate('/reading')} />
             <Button name = "Become a Tarot Reader" width="15rem" bg = "#81BFDA" border = "2px solid #fff" color = "white" />
             </div>
         </div>
