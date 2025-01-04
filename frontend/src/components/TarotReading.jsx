@@ -1,12 +1,10 @@
-import React from 'react'
+import { OrbitControls } from '@react-three/drei'
 
 const TarotReading = () => {
   return (
    <>
-     <mesh>
-        <boxGeometry />
-        <meshStandardMaterial color = "red" />
-     </mesh>
+   <OrbitControls makeDefault />
+  
    </>
   )
 }
