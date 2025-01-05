@@ -11,6 +11,7 @@ import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import PrivateRoutes from './components/PrivateRoutes.jsx'
 import Profile from './components/Profile.jsx'
+import LangHub from './components/LangHub.jsx'
 
 
 const router = createBrowserRouter(
@@ -19,6 +20,10 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='' element={<PrivateRoutes />}>
         <Route path='/profile' element={<Profile />} />
+      </Route>
+      
+      <Route path = '/langhub/:name/:id' element = {<LangHub />}>
+         
       </Route>
     
 

@@ -4,11 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../redux/features/auth/modalSlice";
 import { useAllLanguagesQuery, useDeleteLangMutation } from "../../redux/api/languageSlice";
 import { Trash2} from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 
 const Profile = () => {
 
 const dispatch = useDispatch();
+
+
+ let navigate = useNavigate();
+
 
 const { showModal } = useSelector((state) => state.modal);
 
@@ -60,10 +65,10 @@ const deleteLanguage = async (id) => {
 
     {showModal && <LangModal />}
 
-    <div className="ml-12 flex flex-wrap gap-12">
+    <div  className="ml-12 flex flex-wrap gap-12">
         {allLangs.data && allLangs?.data.length > 0 ? (
           allLangs.data?.map((lang) => (
-            <div key={lang._id} className="mb-2 w-56 h-40 bg-gray-400 text-white text-4xl font-bold flex flex-col gap-2 items-center justify-center rounded-lg shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:bg-orange-600 hover:shadow-2xl">
+            <div onClick={() => navigate(`/langhub/${lang.name}/${lang._id}`)}  key={lang._id} className="mb-2 w-56 h-40 bg-gray-400 text-white text-4xl font-bold flex flex-col gap-2 items-center justify-center rounded-lg shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:bg-orange-600 hover:shadow-2xl">
               <h3 className="text-xl font-bold">{lang?.name}</h3>
               <p>{lang?.level}</p>
               <Trash2 size = {20} className="duration-500 ease hover:text-black" onClick={() => deleteLanguage(lang._id)} />
