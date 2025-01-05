@@ -1,40 +1,30 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
-import { useLanguageMutation } from '../../redux/api/userSlice';
+import { useEffect, useState } from "react"
+import LangModal from "./LangModal";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleModal } from "../../redux/features/auth/modalSlice";
+
 
 const Profile = () => {
 
-    const { userInfo } = useSelector(state => state.auth);
+const dispatch = useDispatch();
 
-    const [name, setName]  = useState('');
-    const [level, setLevel] = useState('');
+const { showModal } = useSelector((state) => state.modal);
 
-     const [language, {isLoading}] = useLanguageMutation();
-
-     
-    const createLang = async (e) => {
-      e.preventDefault();
-
-      try {
-         
-       const res = await language({name, level}).unwrap();
-
-       console.log(res);
+const displayModal = () => {
+  
+dispatch(toggleModal());
+ 
+}
 
 
-      } catch (error) {
-        console.log(error)
-      }
-    }
   return (
-    <div>
-      <form onSubmit={createLang}>
-      <input type = "text" placeholder='language name' onChange={(e) => setName(e.target.value)}/>
-       <input type = "text" placeholder='choose level' onChange={(e) => setLevel(e.target.value)}/>
-       <button type='submit'>submit</button>
-      </form>
-      
+    <div className="flex justify-start items-start h-screen ml-[6rem] mt-12">
+    <div onClick={displayModal} className="w-56 h-40 bg-orange-400 text-white text-4xl font-bold flex items-center justify-center rounded-lg shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:bg-orange-600 hover:shadow-2xl">
+    +
     </div>
+
+    {showModal && <LangModal />}
+  </div>
   )
 }
 
