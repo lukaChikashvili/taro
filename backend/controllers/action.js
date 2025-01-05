@@ -2,6 +2,7 @@ const { asyncHandler } = require('../middlewares/asyncHandler');
 const { User } = require('../models/userModel');
 const bcrypt = require("bcryptjs");
 const { generateToken } = require('../utils/createToken');
+const { Language } = require('../models/LanguageModel');
 
 // create user
 const createUser = asyncHandler(async(req, res) => {
@@ -93,11 +94,42 @@ const getCurrentProfile = asyncHandler(async(req, res) => {
      res.status(404);
      throw new Error('user not found');
   }
+});
+
+
+const createLanguage = asyncHandler(async(req, res) => {
+     const { name, level } = req.body;
+
+     if(!name || !level) {
+      res.status(404).json({message: "name or level is not defined"});
+
+     }
+
+  
+
+     try {
+
+      if (!req.user || !req.user._id) {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+
+       const language = new Language({ name, level, user: req.user._id });
+
+       const savedLanguage = await language.save();
+
+       res.status(201).json(savedLanguage);
+       
+
+      
+     } catch (error) {
+        res.status(500).json({message: error.message})
+     }
 })
 
 module.exports = {
     createUser,
     loginUser,
     logout,
-    getCurrentProfile
+    getCurrentProfile,
+    createLanguage
 }

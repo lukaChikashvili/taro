@@ -36,10 +36,18 @@ export const userApiSlice = apiSlice.injectEndpoints({
               body: data
             })
         }),
+
+        language: builder.mutation({
+            query: (data) => ({
+                url: `${USERS_URL}/language`,
+                method: "POST",
+                body: data
+            })
+        })
     })
 });
 
 
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useProfileMutation, 
+export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useProfileMutation, useLanguageMutation
   }  = userApiSlice;
