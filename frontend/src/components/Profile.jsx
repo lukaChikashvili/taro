@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import LangModal from "./LangModal";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../redux/features/auth/modalSlice";
-import { useAllLanguagesQuery } from "../../redux/api/languageSlice";
+import { useAllLanguagesQuery, useDeleteLangMutation } from "../../redux/api/languageSlice";
+import { Trash2} from 'lucide-react'
 
 
 const Profile = () => {
@@ -13,16 +14,18 @@ const { showModal } = useSelector((state) => state.modal);
 
 const {data: allLangs, error, isLoading, isError, refetch} = useAllLanguagesQuery();
 
+const [deleteLang] = useDeleteLangMutation();
+
  
 
 useEffect(() => {
   if (allLangs) {
     refetch();
   }
-}, [allLangs]);
+}, [allLangs, refetch]);
 
 if (isLoading) {
-  return <p>Loading languages...</p>;
+  return <p className="text-white text-center mt-12">Loading languages...</p>;
 }
 
 
@@ -37,6 +40,16 @@ dispatch(toggleModal());
  
 }
 
+const deleteLanguage = async (id) => {
+   
+    let answer = window.confirm("Are you sure you want to delete?");
+    if(!answer) return;
+
+    await deleteLang(id).unwrap();
+    refetch();
+
+   
+}
 
 
   return (
@@ -50,13 +63,14 @@ dispatch(toggleModal());
     <div className="ml-12 flex flex-wrap gap-12">
         {allLangs.data && allLangs?.data.length > 0 ? (
           allLangs.data?.map((lang) => (
-            <div key={lang._id} className="mb-2 w-56 h-40 bg-gray-400 text-white text-4xl font-bold flex flex-col items-center justify-center rounded-lg shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:bg-orange-600 hover:shadow-2xl">
+            <div key={lang._id} className="mb-2 w-56 h-40 bg-gray-400 text-white text-4xl font-bold flex flex-col gap-2 items-center justify-center rounded-lg shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:bg-orange-600 hover:shadow-2xl">
               <h3 className="text-xl font-bold">{lang?.name}</h3>
               <p>{lang?.level}</p>
+              <Trash2 size = {20} className="duration-500 ease hover:text-black" onClick={() => deleteLanguage(lang._id)} />
             </div>
           ))
         ) : (
-          <p>No languages available</p>
+          <p className="text-center ml-[25rem] mt-12">No languages available</p>
         )}
 
 </div>

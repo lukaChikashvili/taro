@@ -162,6 +162,14 @@ const getLangsById = asyncHandler(async(req, res) => {
     console.error(error);
     res.status(404).json({error: "language not found"});
   }
+});
+
+
+const deleteLang = asyncHandler(async(req, res) => {
+   
+  const deletedLang = await Language.findByIdAndDelete(req.params.id);
+
+    res.status(200).json(deletedLang);
 })
 
 module.exports = {
@@ -171,5 +179,6 @@ module.exports = {
     getCurrentProfile,
     createLanguage, 
     langList,
-    getLangsById
+    getLangsById,
+    deleteLang
 }

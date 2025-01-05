@@ -12,9 +12,16 @@ export const languageApiSlice = apiSlice.injectEndpoints({
             query: (langId) => ({
                 url: `${USERS_URL}/language/${langId}`
             })
+        }),
+
+        deleteLang: builder.mutation({
+            query: (langId) => ({
+               url: `${USERS_URL}/language/${langId}`,
+               method: 'DELETE'
+            })
         })
     })
 });
 
 
-export const { useAllLanguagesQuery, useGetSpecificLangQuery} = languageApiSlice;
+export const { useAllLanguagesQuery, useGetSpecificLangQuery, useDeleteLangMutation} = languageApiSlice;
