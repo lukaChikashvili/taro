@@ -30,7 +30,7 @@ const LangModal = () => {
     }
   return (
     
-    <div className="bg-white w-[500px] h-[400px] p-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-xl z-10">
+    <div className="bg-white w-[500px] h-[400px] p-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-xl z-10 text-black">
       <h2 className="text-2xl font-semibold mb-4">Add New Language</h2>
       <form onSubmit={createLang} className="space-y-4">
         <div>
