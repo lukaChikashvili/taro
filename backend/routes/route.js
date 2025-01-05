@@ -1,5 +1,5 @@
 const express = require('express');
-const { createUser, loginUser, logout, getCurrentProfile, createLanguage } = require('../controllers/action');
+const { createUser, loginUser, logout, getCurrentProfile, createLanguage, langList, deleteLang, getLangsById } = require('../controllers/action');
 const { authenticate } = require('../middlewares/authHandler');
 const router = express.Router();
 
@@ -11,7 +11,8 @@ router.post('/logout', logout);
 router.route('/profile').get(authenticate, getCurrentProfile);
 
 // language routes
-router.route('/language').post(authenticate, createLanguage);
+router.route('/language').post(authenticate, createLanguage).get(langList);
+router.route('/language/:id').get(getLangsById);
 
 
 

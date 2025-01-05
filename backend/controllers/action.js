@@ -118,12 +118,50 @@ const createLanguage = asyncHandler(async(req, res) => {
        const savedLanguage = await language.save();
 
        res.status(201).json(savedLanguage);
-       
+
 
       
      } catch (error) {
         res.status(500).json({message: error.message})
      }
+});
+
+const langList = asyncHandler(async(req, res) => {
+  
+   try {
+
+      const allLangs = await Language.find({});
+
+      res.status(200).json({
+        success: true,
+        data: allLangs
+    });
+    
+   } catch (error) {
+     res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message
+  });
+   }
+});
+
+const getLangsById = asyncHandler(async(req, res) => {
+  try {
+
+    const language = await Language.findById(req.params.id);
+
+    if(language) {
+      return res.json(language);
+    }else {
+      res.status(404);
+      throw new Error('language not found');
+    }
+    
+  } catch (error) {
+    console.error(error);
+    res.status(404).json({error: "language not found"});
+  }
 })
 
 module.exports = {
@@ -131,5 +169,7 @@ module.exports = {
     loginUser,
     logout,
     getCurrentProfile,
-    createLanguage
+    createLanguage, 
+    langList,
+    getLangsById
 }
