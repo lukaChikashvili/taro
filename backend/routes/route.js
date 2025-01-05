@@ -13,6 +13,7 @@ router.route('/profile').get(authenticate, getCurrentProfile);
 // language routes
 router.route('/language').post(authenticate, createLanguage).get(langList);
 router.route('/language/:id').get(getLangsById).delete(deleteLang);
+router.route('/createpdf').post(createpdf);
 
 
 

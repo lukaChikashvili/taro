@@ -1,4 +1,4 @@
-import { USERS_URL } from "../constants";
+import { UPLOAD_URL, USERS_URL } from "../constants";
 import { apiSlice } from "./apiSlice";
 
 
@@ -19,9 +19,17 @@ export const languageApiSlice = apiSlice.injectEndpoints({
                url: `${USERS_URL}/language/${langId}`,
                method: 'DELETE'
             })
+        }),
+
+        uploadPdf: builder.mutation({
+            query: (data) => ({
+                url: `${UPLOAD_URL}`,
+                method: 'POST',
+                body: data
+            })
         })
     })
 });
 
 
-export const { useAllLanguagesQuery, useGetSpecificLangQuery, useDeleteLangMutation} = languageApiSlice;
+export const { useAllLanguagesQuery, useGetSpecificLangQuery, useDeleteLangMutation, useUploadPdfMutation} = languageApiSlice;

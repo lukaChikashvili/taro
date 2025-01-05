@@ -9,6 +9,19 @@ const LangHub = () => {
 
     const {data: allLangs} = useGetSpecificLangQuery(langId);
 
+    const uploadFileHandler = async (e) => {
+      const formData = new FormData();
+      formData.append('pdf', e.target.files[0]);
+
+      try {
+        
+         
+          
+      } catch (error) {
+         console.log(error);
+      }
+   }
+
 
   return (
     <div className='text-white  w-full px-[7rem]  mt-8'>
@@ -26,6 +39,9 @@ const LangHub = () => {
             <Link className='flex items-center text-xl gap-4'><Brain />Practice</Link>
         </div>
         </div>
+
+        <input type='file' name = "image"  accept= "image/*" onChange={uploadFileHandler} 
+                   />
         
        
     </div>
