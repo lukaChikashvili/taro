@@ -11,7 +11,7 @@ import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import PrivateRoutes from './components/PrivateRoutes.jsx'
 import Profile from './components/Profile.jsx'
-import Reading from './components/Reading.jsx'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,7 +20,7 @@ const router = createBrowserRouter(
       <Route path='' element={<PrivateRoutes />}>
         <Route path='/profile' element={<Profile />} />
       </Route>
-      <Route path = '/reading' element = {<Reading />} />
+    
 
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />

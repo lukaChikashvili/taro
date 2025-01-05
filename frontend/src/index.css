@@ -1,17 +1,16 @@
-@import url('https://fonts.cdnfonts.com/css/cinzel');
+@import url('https://fonts.cdnfonts.com/css/anek-tamil');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    background: linear-gradient(135deg, #000000, #010b19);
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
     color: #fff;
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
-    font-family: 'Cinzel Decorative', sans-serif;
-    
+    font-family: 'Anek Tamil', sans-serif;
 }
 
 
