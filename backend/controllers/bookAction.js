@@ -53,10 +53,23 @@ const getSpecificBook  = asyncHandler(async(req, res) => {
    } catch (error) {
     res.status(400).json({ error: error.message });
    }
+});
+
+
+const deleteBook = asyncHandler(async(req, res) => {
+    try {
+
+        const deletedBook = await Book.findByIdAndDelete(req.params.id);
+        res.status(200).json({message: "book deleted", deletedBook});
+        
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 })
 
 module.exports = {
     createBook,
     allBooks, 
-    getSpecificBook
+    getSpecificBook,
+    deleteBook
 };
