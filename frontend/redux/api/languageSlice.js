@@ -1,4 +1,4 @@
-import { UPLOAD_URL, USERS_URL } from "../constants";
+import { BOOK_URL, UPLOAD_URL, USERS_URL } from "../constants";
 import { apiSlice } from "./apiSlice";
 
 
@@ -27,9 +27,19 @@ export const languageApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             })
+        }),
+
+        createBook: builder.mutation({
+            query: (data) => ({
+                url: `${BOOK_URL}/createpdf`,
+                method: 'POST',
+                body: data
+                
+            })
         })
     })
 });
 
 
-export const { useAllLanguagesQuery, useGetSpecificLangQuery, useDeleteLangMutation, useUploadPdfMutation} = languageApiSlice;
+export const { useAllLanguagesQuery, useGetSpecificLangQuery, 
+    useDeleteLangMutation, useUploadPdfMutation, useCreateBookMutation } = languageApiSlice;

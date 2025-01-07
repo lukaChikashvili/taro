@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useParams } from 'react-router'
-import { useGetSpecificLangQuery } from '../../redux/api/languageSlice';
-import { Book, BookA, Brain, ScrollText } from 'lucide-react';
+import { useCreateBookMutation, useGetSpecificLangQuery, useUploadPdfMutation } from '../../redux/api/languageSlice';
+import { Book, BookA, Brain, CodeSquare, ScrollText } from 'lucide-react';
 
 const LangHub = () => {
+
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [imgurl, setImgurl] = useState(null);
+
+  const [createbook] = useCreateBookMutation();
+  const [uploadPdf] = useUploadPdfMutation();
+
+
 
     const { id: langId } = useParams();
 
@@ -15,13 +24,41 @@ const LangHub = () => {
 
       try {
         
-         
+         const res = await uploadPdf(formData).unwrap();
+         setImgurl(res.file);
+       
           
       } catch (error) {
          console.log(error);
       }
    }
 
+
+   const handleSubmit = async () => {
+    try {
+    
+      const bookData = new FormData();
+      bookData.append('pdfUrl', imgurl);
+      bookData.append('title', title);
+      bookData.append('author', author);
+      bookData.append('language', allLangs?._id);
+
+
+      console.log('Submitting book:', bookData);
+  
+  
+      const res = await createbook(bookData).unwrap();
+  
+  
+  
+     
+      if (res.error) {
+        console.log('Error:', res.error);
+      }
+    } catch (error) {
+      console.error('Error occurred while creating book:', error);
+    }
+  };
 
   return (
     <div className='text-white  w-full px-[7rem]  mt-8'>
@@ -40,8 +77,15 @@ const LangHub = () => {
         </div>
         </div>
 
-        <input type='file' name = "image"  accept= "image/*" onChange={uploadFileHandler} 
-                   />
+
+   <input type='text' className='text-black' onChange={(e) => setTitle(e.target.value)} />
+   <input type='text' className='text-black' onChange={(e) => setAuthor(e.target.value)} />
+  
+
+
+   <input type='file' className='text-black'  name = "image"  accept="application/pdf" onChange={uploadFileHandler}  />
+
+   <button onClick={handleSubmit}>submit</button>
         
        
     </div>

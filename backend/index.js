@@ -4,11 +4,13 @@ const cors = require('cors');
 const {routes} = require("./routes/route");
 const {uploadRoutes} = require("./routes/uploadRoutes");
 const path = require('path');
+const {bookRoutes} = require("./routes/bookRoutes");
 const app = express();
 
 require("dotenv").config();
 
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 
 const PORT = process.env.PORT || 5000;
@@ -24,6 +26,7 @@ app.use(cors({
     }));
 
 app.use("/api", routes);
+app.use("/api/books", bookRoutes);
 app.use('/api/upload', uploadRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'routes/uploads')));
