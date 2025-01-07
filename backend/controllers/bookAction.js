@@ -28,6 +28,21 @@ const createBook = asyncHandler(async (req, res) => {
      
 });
 
+const allBooks = asyncHandler(async(req, res) => {
+    
+    try {
+
+        const books = await Book.find({});
+
+        return res.json(books);
+        
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+
+})
+
 module.exports = {
-    createBook
+    createBook,
+    allBooks
 };

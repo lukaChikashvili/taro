@@ -4,7 +4,7 @@ import { useCreateBookMutation, useGetSpecificLangQuery, useUploadPdfMutation } 
 import { useDispatch } from 'react-redux';
 import { hideModal } from '../../redux/features/auth/modalSlice';
 
-const BookModal = () => {
+const BookModal = ({ onImgurlChange }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [imgurl, setImgurl] = useState(null);
@@ -24,6 +24,7 @@ const BookModal = () => {
     try {
       const res = await uploadPdf(formData).unwrap();
       setImgurl(res.file);
+      onImgurlChange(res.file);
     } catch (error) {
       console.log(error);
     }

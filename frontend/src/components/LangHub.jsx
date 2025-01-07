@@ -1,4 +1,3 @@
-
 import { Book, BookA, Brain, CodeSquare, ScrollText } from 'lucide-react';
 import { useGetSpecificLangQuery } from '../../redux/api/languageSlice';
 import {Link,  useParams } from 'react-router';
@@ -7,8 +6,8 @@ import BookModal from './BookModal';
 import { toggleModal } from '../../redux/features/auth/modalSlice';
 
 
-
 const LangHub = () => {
+  
 
   const { id: langId } = useParams();
   const {data: allLangs} = useGetSpecificLangQuery(langId);
@@ -44,6 +43,8 @@ const LangHub = () => {
     </div>
         
        {showModal && <BookModal />}
+
+       
     </div>
   )
 }
