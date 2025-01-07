@@ -12,6 +12,12 @@ const dictionarySchema = mongoose.Schema({
         required: true
     },
 
+    language: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Language', 
+        required: true,
+      },
+      
     gender: {
         type: String,
         required: true

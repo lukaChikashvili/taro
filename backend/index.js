@@ -5,6 +5,7 @@ const {routes} = require("./routes/route");
 const {uploadRoutes} = require("./routes/uploadRoutes");
 const path = require('path');
 const {bookRoutes} = require("./routes/bookRoutes");
+const { dictRoutes } = require("./routes/DictRouts");
 const app = express();
 
 require("dotenv").config();
@@ -27,6 +28,7 @@ app.use(cors({
 
 app.use("/api", routes);
 app.use("/api/books", bookRoutes);
+app.use('/api/dictionary', dictRoutes);
 app.use('/api/upload', uploadRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'routes/uploads')));
