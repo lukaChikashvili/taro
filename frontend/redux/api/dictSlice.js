@@ -9,10 +9,16 @@ export const dictApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             })
+        }),
+
+        getAllWords: builder.query({
+            query: () => ({
+                url: `${DICT_URL}`
+            })
         })
     })
 });
 
 
 
-export const { useCreateWordMutation } = dictApiSlice;
+export const { useCreateWordMutation, useGetAllWordsQuery } = dictApiSlice;

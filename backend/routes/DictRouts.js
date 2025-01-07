@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { createWord } = require('../controllers/DictAction')
+const { createWord, getAllWords } = require('../controllers/DictAction')
 
 
-router.route('/').post(createWord);
+router.route('/').post(createWord).get(getAllWords);
 
 
 

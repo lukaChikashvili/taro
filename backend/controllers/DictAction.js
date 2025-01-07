@@ -30,7 +30,20 @@ const createWord = asyncHandler(async(req, res) => {
 })
 
 
+const getAllWords = asyncHandler(async(req, res) => {
+   
+    try {
+         
+        const allWords = await Dict.find({});
+        res.json(allWords);
+         
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+})
+
 
 module.exports = {
-    createWord
+    createWord,
+    getAllWords
 }
