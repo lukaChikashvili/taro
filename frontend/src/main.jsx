@@ -26,7 +26,7 @@ const router = createBrowserRouter(
       
       <Route path = '/langhub/:name/:id' element = {<LangHub />} />
         <Route path = '/allbooks/:id' element = {<BookDetail />} />
-         <Route path = '/langhub/:name/dictionary' element = {<Dictionary />} />
+         <Route path = '/dictionary/:id' element = {<Dictionary />} />
       
     
 

@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useCreateWordMutation } from '../../redux/api/dictSlice';
+import { useAllLanguagesQuery, useGetSpecificBookQuery, useGetSpecificLangQuery } from '../../redux/api/languageSlice';
+import { useParams } from 'react-router';
 
 
 const Dictionary = () => {
@@ -6,7 +9,28 @@ const Dictionary = () => {
   const [meaning, setMeaning] = useState("");
   const [gender, setGender] = useState("");
 
+
+
+  const [createWord] = useCreateWordMutation();
+
+  
+  const { id: langId } = useParams();
+  const { data: allLangs } = useGetSpecificLangQuery(langId);
+
 const handleAddWord = async () => {
+
+      try {
+          const language = allLangs;
+          console.log(language)
+        
+         
+        const res = await createWord({word, meaning, gender, language}).unwrap();
+        console.log(res);
+
+      } catch (error) {
+        console.log(error)
+      }
+     
 
 }
   return (
