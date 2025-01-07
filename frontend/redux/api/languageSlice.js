@@ -36,10 +36,16 @@ export const languageApiSlice = apiSlice.injectEndpoints({
                 body: data
                 
             })
+        }),
+
+        getAllBooks: builder.query({
+            query: () => ({
+                url: `${BOOK_URL}`
+            })
         })
     })
 });
 
 
 export const { useAllLanguagesQuery, useGetSpecificLangQuery, 
-    useDeleteLangMutation, useUploadPdfMutation, useCreateBookMutation } = languageApiSlice;
+    useDeleteLangMutation, useUploadPdfMutation, useCreateBookMutation, useGetAllBooksQuery } = languageApiSlice;
