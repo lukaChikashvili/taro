@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { useCreateWordMutation, useGetAllWordsQuery } from '../../redux/api/dictSlice';
+import { useCreateWordMutation, useDeleteWordMutation, useGetAllWordsQuery } from '../../redux/api/dictSlice';
 import { useGetSpecificLangQuery } from '../../redux/api/languageSlice';
 import { useParams } from 'react-router';
+import { Trash2 } from 'lucide-react';
 
 const Dictionary = () => {
   const [word, setWord] = useState("");
@@ -10,11 +11,15 @@ const Dictionary = () => {
 
   const [createWord] = useCreateWordMutation();
 
+  
+
   const { id: langId } = useParams();
   const { data: allLangs } = useGetSpecificLangQuery(langId);
   const { data: allWords, refetch, isLoading } = useGetAllWordsQuery();
 
   const filteredWords = allWords?.filter((word) => word.language === langId);
+
+  const [deleteWord] = useDeleteWordMutation();
 
   const handleAddWord = async () => {
     try {
@@ -28,6 +33,16 @@ const Dictionary = () => {
       console.log(error);
     }
   };
+
+
+  const handleWordDelete = async(id) => {
+      let answer = window.confirm("do you realy want to delete?");
+
+      if(!answer) return;
+
+      await deleteWord(id).unwrap();
+      refetch();
+  }
 
   return (
     <div className="min-h-screen text-white px-8 py-6">
@@ -83,9 +98,13 @@ const Dictionary = () => {
                 <td className="px-6 py-4">{word?.word}</td>
                 <td className="px-6 py-4">{word?.meaning}</td>
                 <td className="px-6 py-4">{word?.gender}</td>
+                <td className="px-6 py-4"><Trash2 size = {20} className='text-red-400 cursor-pointer' 
+                 onClick={() => handleWordDelete(word._id)}/></td>
+             
                 
               </tr>
             ))}
+            
           </tbody>
         </table>
       </div>

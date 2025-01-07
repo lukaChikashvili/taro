@@ -15,10 +15,17 @@ export const dictApiSlice = apiSlice.injectEndpoints({
             query: () => ({
                 url: `${DICT_URL}`
             })
+        }),
+
+        deleteWord: builder.mutation({
+            query: (dictId) => ({
+                url: `${DICT_URL}/${dictId}`,
+                method: 'DELETE'
+            })
         })
     })
 });
 
 
 
-export const { useCreateWordMutation, useGetAllWordsQuery } = dictApiSlice;
+export const { useCreateWordMutation, useGetAllWordsQuery , useDeleteWordMutation} = dictApiSlice;

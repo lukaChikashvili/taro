@@ -40,10 +40,23 @@ const getAllWords = asyncHandler(async(req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
+});
+
+const deleteWord = asyncHandler(async(req, res) => {
+    try {
+        
+        const words = await Dict.findByIdAndDelete(req.params.id);
+        res.status(200).json({message: "word deleted", words});
+        
+
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 })
 
 
 module.exports = {
     createWord,
-    getAllWords
+    getAllWords,
+    deleteWord
 }
