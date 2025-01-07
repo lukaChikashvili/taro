@@ -51,7 +51,7 @@ const LangHub = () => {
           <Link className="flex items-center text-xl gap-4">
             <Book />Books
           </Link>
-          <Link to="/dictionary" className="flex items-center text-xl gap-4">
+          <Link to={`/langhub/${allLangs?.name}/dictionary`} className="flex items-center text-xl gap-4">
             <BookA />Dictionary
           </Link>
           <Link className="flex items-center text-xl gap-4">

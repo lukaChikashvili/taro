@@ -13,6 +13,7 @@ import PrivateRoutes from './components/PrivateRoutes.jsx'
 import Profile from './components/Profile.jsx'
 import LangHub from './components/LangHub.jsx'
 import BookDetail from './components/BookDetail.jsx'
+import Dictionary from './components/Dictionary.jsx'
 
 
 const router = createBrowserRouter(
@@ -25,7 +26,7 @@ const router = createBrowserRouter(
       
       <Route path = '/langhub/:name/:id' element = {<LangHub />} />
         <Route path = '/allbooks/:id' element = {<BookDetail />} />
-         
+         <Route path = '/langhub/:name/dictionary' element = {<Dictionary />} />
       
     
 
