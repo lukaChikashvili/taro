@@ -40,9 +40,23 @@ const allBooks = asyncHandler(async(req, res) => {
         res.status(400).json({ error: error.message });
     }
 
+});
+
+
+const getSpecificBook  = asyncHandler(async(req, res) => {
+
+   try {
+
+      const bookById = await Book.findById(req.params.id);
+      res.json(bookById);
+    
+   } catch (error) {
+    res.status(400).json({ error: error.message });
+   }
 })
 
 module.exports = {
     createBook,
-    allBooks
+    allBooks, 
+    getSpecificBook
 };
