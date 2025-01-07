@@ -3,6 +3,7 @@ import { useGetSpecificBookQuery } from '../../redux/api/languageSlice'
 import { useParams } from 'react-router';
 import { pdfjs } from 'react-pdf';
 import PdfComp from './PdfComp';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
