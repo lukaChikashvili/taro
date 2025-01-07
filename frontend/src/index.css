@@ -5,9 +5,10 @@
 @tailwind utilities;
 
 body {
-    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    background-color: #021526;
+    
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     overflow-x: hidden;
     font-family: 'Anek Tamil', sans-serif;
 }

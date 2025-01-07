@@ -1,6 +1,6 @@
 import { Book, BookA, Brain, ScrollText } from 'lucide-react';
 import { useGetAllBooksQuery, useGetSpecificLangQuery } from '../../redux/api/languageSlice';
-import { Link, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import BookModal from './BookModal';
 import { toggleModal } from '../../redux/features/auth/modalSlice';
@@ -16,6 +16,8 @@ const LangHub = () => {
   const filteredBooks = allBooks?.filter((book) => book.language === langId);
 
   const { showModal } = useSelector((state) => state.modal);
+
+  let navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -64,7 +66,7 @@ const LangHub = () => {
          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredBooks?.map((book) => (
-              <div key={book._id} className="w-56 h-40 bg-gray-800 p-4 rounded-lg shadow-md">
+              <div key={book._id} onClick={() => navigate(`/allbooks/${book._id}`)} className="w-56 h-40 bg-gray-800 p-4  duration-500 ease rounded-lg shadow-md hover:opacity-55 cursor-pointer hover:-mt-2s">
                 <h3 className="text-xl font-bold">{book.title}</h3>
                 <p className="text-sm text-gray-400">{book.author}</p>
               </div>

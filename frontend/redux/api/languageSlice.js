@@ -42,10 +42,16 @@ export const languageApiSlice = apiSlice.injectEndpoints({
             query: () => ({
                 url: `${BOOK_URL}`
             })
+        }),
+
+        getSpecificBook: builder.query({
+            query: (bookId) => ({
+                url: `${BOOK_URL}/${bookId}`
+            })
         })
     })
 });
 
 
 export const { useAllLanguagesQuery, useGetSpecificLangQuery, 
-    useDeleteLangMutation, useUploadPdfMutation, useCreateBookMutation, useGetAllBooksQuery } = languageApiSlice;
+    useDeleteLangMutation, useUploadPdfMutation, useCreateBookMutation, useGetAllBooksQuery, useGetSpecificBookQuery } = languageApiSlice;

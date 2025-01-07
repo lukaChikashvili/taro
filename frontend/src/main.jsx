@@ -12,6 +12,7 @@ import Register from './components/Register.jsx'
 import PrivateRoutes from './components/PrivateRoutes.jsx'
 import Profile from './components/Profile.jsx'
 import LangHub from './components/LangHub.jsx'
+import BookDetail from './components/BookDetail.jsx'
 
 
 const router = createBrowserRouter(
@@ -22,9 +23,10 @@ const router = createBrowserRouter(
         <Route path='/profile' element={<Profile />} />
       </Route>
       
-      <Route path = '/langhub/:name/:id' element = {<LangHub />}>
+      <Route path = '/langhub/:name/:id' element = {<LangHub />} />
+        <Route path = '/allbooks/:id' element = {<BookDetail />} />
          
-      </Route>
+      
     
 
       <Route path='/login' element={<Login />} />
