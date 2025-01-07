@@ -34,7 +34,7 @@ const LangHub = () => {
     if(!answer) return;
 
     await deleteBook(id).unwrap();
- 
+    refetch();
 
   }
 

@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { Document, Page } from 'react-pdf';
+import 'react-pdf/dist/Page/TextLayer.css';
 
 function PdfComp({ url }) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
-  // On document load, set the total number of pages
+  
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
   }
 
-  // Handle page change
+  
   const nextPage = () => {
     if (pageNumber < numPages) {
       setPageNumber(pageNumber + 1);
@@ -28,7 +29,7 @@ function PdfComp({ url }) {
       <div className="pdf-document-container w-full max-w-3xl">
        
         <Document file={url} onLoadSuccess={onDocumentLoadSuccess}>
-          <Page pageNumber={pageNumber} renderTextLayer = {false} renderAnnotationLayer = {false} />
+          <Page scale={1.3} pageNumber={pageNumber} renderTextLayer = {true} renderAnnotationLayer = {false} />
         </Document>
       </div>
 
