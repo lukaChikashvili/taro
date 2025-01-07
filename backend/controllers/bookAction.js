@@ -1,6 +1,6 @@
 const { asyncHandler } = require('../middlewares/asyncHandler');
 const { Book } = require('../models/bookModel');
-const { Lnaguage, Language } = require('../models/LanguageModel')
+const {  Language } = require('../models/LanguageModel')
 
 const createBook = asyncHandler(async (req, res) => {
    const { title, author, language, pdfUrl } = req.fields;

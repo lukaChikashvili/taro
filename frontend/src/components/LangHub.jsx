@@ -1,65 +1,26 @@
-import React, { useState } from 'react'
-import { Link, useParams } from 'react-router'
-import { useCreateBookMutation, useGetSpecificLangQuery, useUploadPdfMutation } from '../../redux/api/languageSlice';
+
 import { Book, BookA, Brain, CodeSquare, ScrollText } from 'lucide-react';
+import { useGetSpecificLangQuery } from '../../redux/api/languageSlice';
+import {Link,  useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import BookModal from './BookModal';
+import { toggleModal } from '../../redux/features/auth/modalSlice';
+
+
 
 const LangHub = () => {
 
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [imgurl, setImgurl] = useState(null);
+  const { id: langId } = useParams();
+  const {data: allLangs} = useGetSpecificLangQuery(langId);
 
-  const [createbook] = useCreateBookMutation();
-  const [uploadPdf] = useUploadPdfMutation();
+  const { showModal } = useSelector((state) => state.modal);
 
-
-
-    const { id: langId } = useParams();
-
-    const {data: allLangs} = useGetSpecificLangQuery(langId);
-
-    const uploadFileHandler = async (e) => {
-      const formData = new FormData();
-      formData.append('pdf', e.target.files[0]);
-
-      try {
-        
-         const res = await uploadPdf(formData).unwrap();
-         setImgurl(res.file);
-       
-          
-      } catch (error) {
-         console.log(error);
-      }
-   }
-
-
-   const handleSubmit = async () => {
-    try {
-    
-      const bookData = new FormData();
-      bookData.append('pdfUrl', imgurl);
-      bookData.append('title', title);
-      bookData.append('author', author);
-      bookData.append('language', allLangs?._id);
-
-
-      console.log('Submitting book:', bookData);
+  const dispatch = useDispatch();
+ 
+  const displayModal = () => {
+    dispatch(toggleModal());
+  }
   
-  
-      const res = await createbook(bookData).unwrap();
-  
-  
-  
-     
-      if (res.error) {
-        console.log('Error:', res.error);
-      }
-    } catch (error) {
-      console.error('Error occurred while creating book:', error);
-    }
-  };
-
   return (
     <div className='text-white  w-full px-[7rem]  mt-8'>
         <div className='flex justify-between items-center gap-12 '>
@@ -78,16 +39,11 @@ const LangHub = () => {
         </div>
 
 
-   <input type='text' className='text-black' onChange={(e) => setTitle(e.target.value)} />
-   <input type='text' className='text-black' onChange={(e) => setAuthor(e.target.value)} />
-  
-
-
-   <input type='file' className='text-black'  name = "image"  accept="application/pdf" onChange={uploadFileHandler}  />
-
-   <button onClick={handleSubmit}>submit</button>
+        <div onClick={displayModal} className=" mt-8 w-56 h-40 bg-orange-400 text-white text-4xl font-bold flex items-center justify-center rounded-lg shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:bg-orange-600 hover:shadow-2xl">
+    +
+    </div>
         
-       
+       {showModal && <BookModal />}
     </div>
   )
 }

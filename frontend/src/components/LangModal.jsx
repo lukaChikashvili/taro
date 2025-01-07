@@ -54,7 +54,7 @@ const LangModal = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className={`w-full py-3 text-white bg-blue-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`w-full py-3 text-white bg-blue-500 rounded-md focus:outline-none focus:ring-2 focus:text-black hover:text-black  ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={isLoading}
           >
             {isLoading ? 'Submitting...' : 'Submit'}
