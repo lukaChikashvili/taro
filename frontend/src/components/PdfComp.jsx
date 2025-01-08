@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Document, Page } from 'react-pdf';
 import 'react-pdf/dist/Page/TextLayer.css';
 
-function PdfComp({ url }) {
+function PdfComp({ url,  onSaveHighlight  }) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [highlights, setHighlights] = useState([]);
@@ -51,8 +51,13 @@ function PdfComp({ url }) {
       };
 
       setHighlights((prevHighlights) => [...prevHighlights, highlight]);
+
+      if (onSaveHighlight) {
+        onSaveHighlight(selectedText);
+      }
+
     }
-  }, []);
+  }, [onSaveHighlight]);
 
   return (
     <div className="pdf-container w-full h-full flex flex-col justify-center items-center py-8" style={{ position: 'relative' }}>
