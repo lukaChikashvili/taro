@@ -13,6 +13,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 const BookDetail = () => {
 
+
+
     const { id } = useParams();
 
     const { data: specificBook } = useGetSpecificBookQuery(id);
@@ -24,6 +26,7 @@ const BookDetail = () => {
           console.log(specificBook);
         }
       }, [specificBook]);
+      
 
       const handleAddWord = async(word) => {
         try {
