@@ -14,6 +14,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 const BookDetail = () => {
 
 
+  
+
+
 
     const { id } = useParams();
 

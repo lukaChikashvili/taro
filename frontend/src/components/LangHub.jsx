@@ -62,7 +62,7 @@ const LangHub = () => {
           </Link>
         </div>
       </div>
-      <h2 className="text-2xl font-semibold mb-4 mt-12 text-slate-300">Books in Spanish</h2>
+      <h2 className="text-2xl font-semibold mb-4 mt-12 text-slate-300">Books in {allLangs?.name}</h2>
 
       <div className="mt-8 flex items-center w-full gap-12">
         
