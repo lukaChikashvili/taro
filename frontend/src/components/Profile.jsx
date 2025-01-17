@@ -27,7 +27,7 @@ useEffect(() => {
   if (allLangs) {
     refetch();
   }
-}, [allLangs, refetch]);
+}, [allLangs?.data]);
 
 if (isLoading) {
   return <p className="text-white text-center mt-12">Loading languages...</p>;

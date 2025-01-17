@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import BookModal from './BookModal';
 import { toggleModal } from '../../redux/features/auth/modalSlice';
+import { useEffect } from 'react';
 
 const LangHub = () => {
   const { id: langId } = useParams();
@@ -27,6 +28,9 @@ const LangHub = () => {
 
   const [deleteBook] = useDeleteBookMutation();
 
+  useEffect(() => {
+    refetch();
+  }, [filteredBooks])
 
 
   const deleteSpecificBook = async (id) => {
