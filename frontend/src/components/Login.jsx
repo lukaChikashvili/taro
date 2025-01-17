@@ -48,9 +48,9 @@ const Login = () => {
         <h1 className='text-4xl text-main text-center'>Sign in </h1>
         
         <form onSubmit={handleSubmit} className='flex flex-col gap-6 w-full'>
-        <label>Email</label>
+        <label className='text-white text-xl'>Email</label>
         <input className='p-2 rounded-md shadow-md shadow-black outline-none text-black ' placeholder='Enter your email' type = 'email' value = {email} onChange={(e) => setEmail(e.target.value)} />
-        <label>password</label>
+        <label className='text-white text-xl'>password</label>
         <input type = 'password' className='p-2 rounded-md shadow-md shadow-black outline-none text-black ' placeholder='Enter your password' value = {password} onChange={(e) => setPassword(e.target.value)} />
           
           <button type='submit' className = "w-full mt-4" disabled={isLoading}>{isLoading ? 'Please wait..' : 'Enter'}</button>

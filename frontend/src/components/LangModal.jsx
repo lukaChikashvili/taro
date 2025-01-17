@@ -9,7 +9,7 @@ const LangModal = () => {
     const [name, setName]  = useState('');
     const [level, setLevel] = useState('');
 
-     const [language, {isLoading}] = useLanguageMutation();
+     const [language,  {isLoading}] = useLanguageMutation();
      const dispatch = useDispatch();
      
     const createLang = async (e) => {
@@ -19,7 +19,7 @@ const LangModal = () => {
          
        const res = await language({name, level}).unwrap();
        dispatch(hideModal());
-
+     
        
        console.log(res);
 

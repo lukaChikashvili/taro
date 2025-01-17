@@ -54,7 +54,8 @@ const BookModal = () => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
-      <div className="bg-gray-800 text-white p-8 rounded-lg w-full max-w-md shadow-lg">
+      <div className="relative bg-gray-800 text-white p-8 rounded-lg w-full max-w-md shadow-lg">
+        <span className='absolute top-4 right-4 text-xl cursor-pointer' onClick = {() => dispatch(hideModal())}>X</span>
         <h1 className="text-2xl font-semibold text-center mb-6">Add a New Book for {allLangs?.name}</h1>
 
         <form className="space-y-6">

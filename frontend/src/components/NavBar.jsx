@@ -6,6 +6,7 @@ import { useLogoutMutation } from '../../redux/api/userSlice';
 import { logout } from '../../redux/features/auth/authSlice';
 import { LogIn, LogOut} from 'lucide-react'
 import logo from '../assets/logo.png'
+import user from '../assets/user.png'
 
 const NavBar = () => {
     let navigate = useNavigate();
@@ -38,9 +39,14 @@ const NavBar = () => {
 
        <nav>
         {userInfo ? (
+          <div className='flex items-center gap-6'>
+           <img onClick={() => navigate('/profile')} src = {user} className='w-12 cursor-pointer border-2 border-transparent rounded-full duration-500 ease hover:border-white' />
             <span onClick={logoutHandler}>
+          
             <Button name="logout" icon = {<LogOut size = {20} />} />
+             
             </span>
+            </div>
         ) : (
             <span onClick={() => navigate("/login")}>
             <Button name="login" icon={<LogIn size = {20} />}/>
