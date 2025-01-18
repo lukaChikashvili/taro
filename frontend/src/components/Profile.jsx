@@ -5,6 +5,7 @@ import { toggleModal } from "../../redux/features/auth/modalSlice";
 import { useAllLanguagesQuery, useDeleteLangMutation } from "../../redux/api/languageSlice";
 import { Trash2} from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import Loader from "./Loader";
 
 
 const Profile = () => {
@@ -36,7 +37,7 @@ useEffect(() => {
 }, [allLangs?.data]);
 
 if (isLoading) {
-  return <p className="text-white text-center mt-12">Loading languages...</p>;
+  return <Loader />
 }
 
 

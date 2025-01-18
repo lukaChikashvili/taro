@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLanguageMutation } from '../../redux/api/userSlice';
 import { hideModal } from '../../redux/features/auth/modalSlice';
+import Loader from './Loader';
 
 const LangModal = () => {
     const { userInfo } = useSelector(state => state.auth);
@@ -57,7 +58,7 @@ const LangModal = () => {
             className={`w-full py-3 text-white bg-blue-500 rounded-md focus:outline-none focus:ring-2 focus:text-black hover:text-black  ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={isLoading}
           >
-            {isLoading ? 'Submitting...' : 'Submit'}
+            {isLoading ? <Loader /> : 'Submit'}
           </button>
         </div>
       </form>

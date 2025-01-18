@@ -72,12 +72,7 @@ function PdfComp({ url,  onSaveHighlight  }) {
           />
         </Document>
 
-         {highlights.map((value, i) => (
-           <div key={i}>
-             <span className='absolute bg-yellow-500 font-bold text-black' 
-             style={{top: value.position.top - 60, left: value.position.left - 40}}>{value.text}</span>
-            </div>
-         ))}
+        
       </div>
 
       <div className="pdf-navigation flex items-center justify-between w-full mt-4 px-4">

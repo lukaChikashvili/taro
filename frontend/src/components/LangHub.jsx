@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import BookModal from './BookModal';
 import { toggleModal } from '../../redux/features/auth/modalSlice';
 import { useEffect } from 'react';
+import Loader from './Loader';
 
 const LangHub = () => {
   const { id: langId } = useParams();
@@ -40,6 +41,10 @@ const LangHub = () => {
     await deleteBook(id).unwrap();
     refetch();
 
+  }
+
+  if(isLoading) {
+    return <Loader />
   }
 
   return (

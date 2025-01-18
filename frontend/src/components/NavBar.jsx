@@ -40,6 +40,7 @@ const NavBar = () => {
        <nav>
         {userInfo ? (
           <div className='flex items-center gap-6'>
+            <h2 className='text-white text-2xl'>{userInfo.username}</h2>
            <img onClick={() => navigate('/profile')} src = {user} className='w-12 cursor-pointer border-2 border-transparent rounded-full duration-500 ease hover:border-white' />
             <span onClick={logoutHandler}>
           

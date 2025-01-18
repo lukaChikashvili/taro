@@ -35,6 +35,8 @@ const Dictionary = () => {
   };
 
 
+  
+
   const handleWordDelete = async(id) => {
       let answer = window.confirm("do you realy want to delete?");
 
