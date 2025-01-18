@@ -11,6 +11,8 @@ const Profile = () => {
 
 const dispatch = useDispatch();
 
+const { userInfo } = useSelector((state) => state.auth);
+
 
  let navigate = useNavigate();
 
@@ -21,12 +23,16 @@ const {data: allLangs, error, isLoading, isError, refetch} = useAllLanguagesQuer
 
 const [deleteLang] = useDeleteLangMutation();
 
+const filteredLanguages = allLangs?.data.filter((lang) => lang.user === userInfo._id);
  
 
 useEffect(() => {
   if (allLangs) {
     refetch();
   }
+ 
+
+  
 }, [allLangs?.data]);
 
 if (isLoading) {
@@ -66,8 +72,8 @@ const deleteLanguage = async (id) => {
     {showModal && <LangModal />}
 
     <div  className="ml-12 flex flex-wrap gap-12">
-        {allLangs.data && allLangs?.data.length > 0 ? (
-          allLangs.data?.map((lang) => (
+        {filteredLanguages && filteredLanguages?.length > 0 ? (
+          filteredLanguages?.map((lang) => (
             <div onClick={() => navigate(`/langhub/${lang.name}/${lang._id}`)}  key={lang._id} className="mb-2 w-56 h-40 bg-gray-400 text-white text-4xl font-bold flex flex-col gap-2 items-center justify-center rounded-lg shadow-lg cursor-pointer transform transition duration-300 ease-in-out hover:bg-orange-600 hover:shadow-2xl">
               <h3 className="text-xl font-bold">{lang?.name}</h3>
               <p>{lang?.level}</p>

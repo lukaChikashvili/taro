@@ -54,6 +54,7 @@ const Login = () => {
         <input type = 'password' className='p-2 rounded-md shadow-md shadow-black outline-none text-black ' placeholder='Enter your password' value = {password} onChange={(e) => setPassword(e.target.value)} />
           
           <button type='submit' className = "w-full mt-4" disabled={isLoading}>{isLoading ? 'Please wait..' : 'Enter'}</button>
+          <span className='text-white'>you don't have account? <span className='underline underline-offset-4 cursor-pointer text-orange-500' onClick={() => navigate('/register')}>Register</span></span>
       </form>
       </div>
      

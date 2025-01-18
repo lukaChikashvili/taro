@@ -8,7 +8,7 @@ const Hero = () => {
     <div className="flex flex-col xl:flex-row items-center  xl:items-center xl:justify-between px-6 md:px-12 lg:px-16 xl:px-24 py-12 mt-12 md:-mt-8  ">
      
       <div className="flex flex-col gap-8 max-w-5xl md:max-w-2xl justify-center text-center xl:text-left">
-        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl leading-tight">
+        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl leading-tight lg:leading-[4.6rem]">
           Flow into <span className="text-main">Fluency</span>, One Word at a Time
         </h1>
         <span className="w-24 md:w-full h-[0.5px] bg-main self-center xl:self-start"></span>
