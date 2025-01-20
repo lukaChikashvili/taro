@@ -7,7 +7,11 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": "https://fluentflow.onrender.com",
-      "/uploads": "https://fluentflow.onrender.com"
+      "/uploads": {
+        target: "https://fluentflow.onrender.com",
+        changeOrigin: true,
+        secure: false,
+      }
     }
   }
 })
