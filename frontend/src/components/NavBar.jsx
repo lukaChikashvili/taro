@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLogoutMutation } from '../../redux/api/userSlice';
 import { logout } from '../../redux/features/auth/authSlice';
 import { LogIn, LogOut} from 'lucide-react'
-import logo from '../assets/logo.png'
+import logo from '../../public/logo.png'
 import user from '../assets/user.png'
 
 const NavBar = () => {
